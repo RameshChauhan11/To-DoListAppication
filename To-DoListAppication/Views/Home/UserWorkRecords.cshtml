@@ -1,0 +1,58 @@
+﻿@model ICollection<WorkRecordModel>;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+</head>
+<body>
+    <div class="container">
+        <div class="col-sm-12">
+            <table class="table table-border text-center" border="2">
+                <thead>
+                    <tr>
+                        <th>Work Name</th>
+                        <th>Work Details</th>
+                        <th>User Email</th>
+                        <th>IsCompleted</th>
+                        <th>Date of Work</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        if(Model.Count>0)
+                        {
+                        foreach (var data in Model)
+                        {
+                            <tr>
+                                
+                                <td>@data.workName</td>
+                                <td>@data.workDetails</td>
+                                <td>@data.userEmail</td>
+                                <td>@data.IsCompleted</td>
+                                <td>@data.dateOfWork</td>
+                                <td>
+                                    <a class="btn btn-outline-danger" href="/home/workRecordDelete?workId=@data.workId">Delete</a>&nbsp;
+                                    <a class="btn btn-outline-danger" href="/home/workRecordEdit?workId=@data.workId&email=@data.userEmail">Edit</a>&nbsp;
+
+                                </td>
+                            </tr>
+                        }
+                    }
+                    }
+                    else
+                    {
+                        <p>No data present </p>
+                    }
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</body>
+</html>
+

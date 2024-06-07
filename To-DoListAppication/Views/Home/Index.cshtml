@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<html>
+    <head>
+        <style>
+            form
+{
+    box-shadow:0px 0px 1px 2px black;
+}
+            .inp
+            {
+               
+                border-bottom:2px solid grey;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 mx-auto ">
+                <form class="p-3" method="post">
+                        <h3 class="text-center">Sign <b class="text-danger">IN</b></h3><br/>
+                        <div class="row">
+                            <div class="col-sm-3"><b>Name :</b></div>
+                            <div class="col-sm-9"><input type="text" name="name" id="name"placeholder="Enter Name"class="inp form-control" />
+                            <span class="text-danger">@Html.ValidationMessage("name")</span>
+                        </div>
+                        </div><br/>
+                    <div class="row">
+                        <div class="col-sm-3"><b>Email :</b></div>
+                        <div class="col-sm-9"><input type="email" name="email" id="email" placeholder="Enter Email" class="inp form-control" />
+                            <span class="text-danger">@Html.ValidationMessage("email")</span>
+
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-3"><b>Mobile :</b></div>
+                        <div class="col-sm-9"><input type="number" name="mobile" id="mobile" placeholder="Enter Mobile" class="inp form-control" />
+                            <span class="text-danger">@Html.ValidationMessage("mobile")</span>
+
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-3"><b>Password :</b></div>
+                        <div class="col-sm-9"><input type="password" name="password" id="password" placeholder="Enter Password" class="inp form-control" />
+                            <span class="text-danger">@Html.ValidationMessage("password")</span>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-3"><b>Re-Password :</b></div>
+                        <div class="col-sm-9"><input type="password" name="re_password" id="re_password" placeholder="Enter Re-Password" class="inp form-control" />
+                            <span class="text-danger">@Html.ValidationMessage("re_password")</span>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-3"><input type="reset" value="Reset" class="btn btn-secondary form-control"/></div>
+                        <div class="col-sm-9"><input type="submit" value="Sign In" class="btn btn-primary form-control" /></div>
+                        </div><br/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

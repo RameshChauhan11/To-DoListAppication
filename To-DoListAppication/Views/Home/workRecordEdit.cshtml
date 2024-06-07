@@ -1,0 +1,95 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+
+}
+
+<html>
+<head>
+    <style>
+        form {
+            box-shadow: 0px 0px 1px 2px black;
+        }
+
+        .inp {
+            border-bottom: 2px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-sm-6 mx-auto ">
+                @if (Model != null)
+                {
+                    <form class="p-3" method="post">
+                        <h3 class="text-center">Update <b class="text-danger">Profile</b></h3><br />
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                                <input type="hidden" name="name" id="name" value="@Model.workId" placeholder="Enter Name" class="inp form-control" />
+                                
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9">
+                                <input type="hidden" name="userEmail"  readonly value="@Model.userEmail" placeholder="Enter Email" class="inp form-control" />
+                                
+
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-sm-3"><b>Work Name:</b></div>
+                            <div class="col-sm-9">
+                                <input type="text" name="workName" id="mobile" value="@Model.workName" placeholder="Enter Mobile" class="inp form-control" />
+            
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-sm-3"><b>Work Details :</b></div>
+                            <div class="col-sm-9">
+                                <Textarea name="workDetails" placeholder="Enter Work Detail" class="inp form-control">@Model.workDetails</Textarea>
+                                <span class="text-danger">@Html.ValidationMessage("workDetails")</span>
+
+                            </div>
+                        </div><br />
+
+                        <div class="row">
+                            <div class="col-sm-3"><b>IsCompleted :</b></div>
+                            <div class="col-sm-9">
+                                <select name="IsCompleted" class=" inp form-control">
+                                    @if (Model.IsCompleted == "Yes")
+                                    {
+                                        <option selected>Yes</option>
+                                        <option>No</option>
+                                    }
+                                    else
+                                    {
+                                        <option>Yes</option>
+                                        <option selected>No</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-sm-3"><b>Date of Work:</b></div>
+                            <div class="col-sm-9">
+                                <input type="date" name="dateOfWork" value="@Model.dateOfWork.ToString("yyyy-MM-dd")" class="inp form-control" />
+                            </div>
+                        </div><br />
+                        
+
+                        <div class="row">
+                            <div class="col-sm-3"><input type="reset" value="Reset" class="btn btn-secondary form-control" /></div>
+                            <div class="col-sm-9"><input type="submit" value="Update" class="btn btn-primary form-control" /></div>
+                        </div><br />
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

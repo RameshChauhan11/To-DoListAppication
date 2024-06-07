@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+}
+
+<html>
+<head>
+    <style>
+        form {
+            box-shadow: 0px 0px 1px 2px black;
+        }
+
+        .inp {
+            border-bottom: 2px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container m-5">
+        <div class="row">
+
+
+
+            <div class="col-sm-6 mx-auto" id="profile">
+               
+                    <h3 class="text-center">User <b class="text-danger">Profile</b></h3><br/>
+                   <table class="w-100 p-2 text-center" border="2" cellpadding="10" >
+                       @if(Model!=null)
+                       {
+                            <tr>
+                                <th>Name</th>
+                                <td>@Model.name</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>@Model.email</td>
+                            </tr>
+                            <tr>
+                                <th>Mobile</th>
+                                <td>@Model.mobile</td>
+                            </tr>
+                            
+                       }
+                       
+
+                   </table>
+              
+            </div>
+
+            
+                <br/>
+                <div class="row">
+                    <div class="col-sm-2 mx-auto m-3">
+                    <a class="btn btn-warning" href="/home/updateSignIn/@Model.Id">Update</a>
+
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</body>
+</html>
+

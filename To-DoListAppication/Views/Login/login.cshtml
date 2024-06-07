@@ -1,0 +1,96 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <style>
+        form {
+            box-shadow: 0px 0px 1px 2px black;
+        }
+
+        .inp {
+            border-bottom: 2px solid grey;
+        }
+    </style>
+
+    <div class="container m-5">
+       <div class="row">
+
+
+
+            <div class="col-sm-6 mx-auto">
+                <form class="p-3" method="post" id="myForm">
+                    <h3 class="text-center">Login <b class="text-danger">IN</b></h3><br />
+                   
+                    <div class="row">
+                        <div class="col-sm-3"><b>UserID :</b></div>
+                        <div class="col-sm-9">
+                            <input type="text" name="email" id="email" placeholder="Enter Email" class="inp form-control" />
+                            <span class="text-danger" id="em">@Html.ValidationMessage("email")</span>
+
+                        </div>
+                    </div><br />
+                    
+                    <div class="row">
+                        <div class="col-sm-3"><b>Password :</b></div>
+                        <div class="col-sm-9">
+                            <input type="password" name="password" id="password" placeholder="Enter Password" class="inp form-control" />
+                            <span class="text-danger" id="ps">@Html.ValidationMessage("password")</span>
+                        </div>
+                    </div><br />
+                    
+                    <div class="row">
+                        <div class="col-sm-3"><input type="reset" value="Reset" class="btn btn-secondary form-control" /></div>
+                        <div class="col-sm-9"><input type="submit" value="Sign In"  id="signIn"class="btn btn-primary form-control" /></div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm12">
+                            <span>If you are not Register Please click on <b><a class="text-primary" href="/login/signin">SignIn</a></b></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                
+
+          
+       </div>
+    </div>
+    
+
+
+    <script>
+        $(document).ready(function () {
+            document.querySelector("#myForm").addEventListener('submit', function (event) {
+
+            
+           
+            // $('#signIn').click(function (event) {
+             var email=  $('#email').val()
+               var password=$('#password').val()
+                let valid = true;
+                if (!email)
+                {
+                   $('#em').text("Email is reqiured")
+                    valid = false;
+                }
+            if (!password) 
+            {
+                $('#ps').text("Password is reqiured")
+                valid = false;
+            }
+            if (!(email.toString().includes("@@")) || !(email.toString().includes("."))) {
+                $('#em').text("Invalid Email ? Email must be contain . and @@")
+                valid = false;
+            }
+            if (!valid) {
+                        event.preventDefault();
+                    }
+             });
+        });
+    </script>
+
+

@@ -1,0 +1,103 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<html>
+<head>
+    <style>
+        form {
+            box-shadow: 0px 0px 1px 2px black;
+        }
+
+        .inp {
+            border:none;
+            border-bottom: 2px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-sm-9 mx-auto ">
+                <form class="p-3" method="post" id="myForm">
+                    <h3 class="text-center">Add <b class="text-danger">Work</b></h3><br />
+                    <div class="row">
+                        <div class="col-sm-3"><b>User Email :</b></div>
+                        <div class="col-sm-9">
+                            <input type="email" name="userEmail"readonly value="@ViewBag.email" placeholder="Enter Email" class="inp form-control" />
+
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-3"><b>Work Name :</b></div>
+                        <div class="col-sm-9">
+                            <input type="text" name="workName" id="workName" placeholder="Enter Work" class="inp form-control" />
+                            <span class="text-danger" id="workNameError">@Html.ValidationMessage("workName")</span>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-3"><b>Work Details :</b></div>
+                        <div class="col-sm-9">
+                            <Textarea name="workDetails" id="workDetails" placeholder="Enter Work Detail" class="inp form-control" ></Textarea>
+                            <span class="text-danger"id="workDetailsError">@Html.ValidationMessage("workDetails")</span>
+
+                        </div>
+                    </div><br />
+                    
+                    <div class="row">
+                        <div class="col-sm-3"><b>IsCompleted :</b></div>
+                        <div class="col-sm-9">
+                            <select name="IsCompleted"id="IsCompleted" class=" inp form-control">
+                                <option disabled selected>--Select--</option>
+                                <option >Yes</option>
+                                <option >No</option>
+                                
+                            </select>
+                            <span class="text-danger"id="IsError">@Html.ValidationMessage("IsCompleted")</span>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-3"><b>Date of Work:</b></div>
+                        <div class="col-sm-9">
+                            <input type="date" name="dateOfWork" id="dateOfWork" placeholder="Enter Re-Password" class="inp form-control" />
+                            <span class="text-danger" id="dowError">@Html.ValidationMessage("re_password")</span>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-sm-3"><input type="reset" value="Reset" class="btn btn-secondary form-control" /></div>
+                        <div class="col-sm-9"><input type="submit" value="Add Work" class="btn btn-primary form-control" /></div>
+                    </div><br />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            
+            document.querySelector("#myForm").addEventListener("submit", function (event) {
+                var workName = $('#workName').val()
+                 var workDetails = $('#workDetails').text()
+                
+                let valid =true;
+                if (!workName)
+                { 
+                    $('#workNameError').text("Work name is reqired")
+                    valid = false;
+                }
+                if (!workDetails) 
+                {
+                    $('#workDetailsError').text("Work Details is reqired")
+                    valid = false;
+                }
+               
+                
+                if (!valid) {
+                    event.preventDefault()
+                }
+            })
+        })
+    </script>
+</body>
+</html>
