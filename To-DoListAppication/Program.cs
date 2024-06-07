@@ -16,7 +16,6 @@ builder.Services.AddDbContext<TODoDBContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("defaults"));
 });
 
-//Kautilya ne Ramesh ko github sikhaya
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
